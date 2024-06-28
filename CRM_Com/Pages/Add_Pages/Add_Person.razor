@@ -1,0 +1,15 @@
+﻿@page "/AddPerson"
+<div class="osnov">
+    <h2>Добавление работника</h2>
+    <a>Id User работника: </a>
+    <input type="text" placeholder="Id_User" @bind-value="Id_User_Person"  style="width:350px;"/>
+    <br />
+    <a>Имя: </a>
+    <input type="text" placeholder="Имя" @bind-value="Name" />
+    <br />
+    <a>Доступ: </a>
+    <input type="text" placeholder="Доступ" @bind-value="Dostup" />
+    <br />
+    <button class="btObnov" @onclick="CreatePerson">Добавить работника</button>
+    <button class="btBack" @onclick="Back">Отмена</button>
+</div>

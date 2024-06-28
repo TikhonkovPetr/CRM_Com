@@ -1,0 +1,38 @@
+﻿.btObnov {
+    margin-left: 7%;
+    background-color: rgb(146, 245, 85);
+    border-color: rgb(39, 165, 29);
+    border: 5px initial;
+    border-width: 5px;
+    border-radius: 20px;
+}
+
+.btBack {
+    background-color: rgb(251, 54, 41);
+    border-color: rgb(191, 52, 42);
+    border: 5px initial;
+    border-width: 5px;
+    border-radius: 20px;
+}
+
+.osnov {
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.radio {
+    margin-left: 20px;
+}
+
+input {
+    margin-bottom: 20px;
+}
+
+textarea {
+    margin-bottom: 20px;
+    width: 20%;
+}
+
+.opA {
+    margin-top: 20px;
+}

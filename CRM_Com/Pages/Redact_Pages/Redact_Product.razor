@@ -1,0 +1,23 @@
+﻿@page "/RedactProduct"
+<div class="osnov">
+    @if (id != Guid.Empty)
+    {
+        <h2>Добавление товара</h2>
+        <a>Название: </a>
+        <input type="text" placeholder="Название" @bind-value="product.Name" />
+        <br />
+        <a>Цена: </a>
+        <input type="text" placeholder="___._₽" @bind-value="product.cost" />
+        <br />
+        <button class="btObnov" @onclick="UpdateClient">Обновить товар</button>
+        <button class="btBack" @onclick="Back">Отмена</button>
+        <br />
+        <br />
+        <button class="btBack" @onclick="DelClient">Удалить товар из базы</button>
+    }
+    else
+    {
+        <h1 style="color:red;">В кэше нет выбранного товара.</h1>
+        <button class="btBack" @onclick="Back">Вернуться к списку товаров</button>
+    }
+</div>

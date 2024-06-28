@@ -1,0 +1,77 @@
+﻿@page "/Operation"
+@if (person == null)
+{
+    <h1>Загрузка...</h1>
+}
+else
+{
+    <div class="MainGrid">
+        <div class="MenuGrid">
+            <div class="outer">
+                <img src="icon-512.png" style="width:40%;height:40%;" />
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToMenu">Главная</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToWorkTask">Задачи</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToClient">Список клиентов</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToProducts">Список товаров</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToOperation">Операции</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToProfil">Профиль</button>
+            </div>
+        </div>
+        <div class="razdel" />
+        <div class="RightGrid">
+            <div class="UpperMenu">
+                <div class="PersonInfo">
+                    <div>
+                        <p>@person.Dostup</p>
+                    </div>
+                    <div>
+                        <p>@person.Name</p>
+                    </div>
+                </div>
+                <div class="NameCompany">
+                    <p>@NameCompanty</p>
+                </div>
+            </div>
+            <div class="razdel" />
+            <div class="menuZad">
+                <div class="VarMenu">
+                    <div />
+                    <div class="Var">
+                        <div class="Name">Список транзакций</div>
+                        <div class="razdel" />
+                        <div class="bt">
+                            <button @onclick="GoToTransaction"> Открыть</button>
+                        </div>
+                    </div>
+                    <div />
+                    <div class="Var">
+                        <div class="Name">История действий<p style="font-size:15px;">*Доступно только Admin</p></div>
+                        <div class="razdel" />
+                        <div class="bt">
+                            <button @onclick="GoToHistory"> Открыть</button>
+                        </div>
+                    </div>
+                    <div/>
+                </div>
+            </div>
+        </div>
+    </div>
+}

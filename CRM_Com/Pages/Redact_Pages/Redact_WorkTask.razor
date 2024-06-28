@@ -1,0 +1,21 @@
+﻿@page "/RedactWorkTask"
+<div class="osnov">
+    @if (workTask==null)
+    {
+        <h1>Загрузка</h1>
+    }
+    else
+    {
+        <h2>Изменить задачу</h2>
+        <a>Пользователь: <a>@person.Name</a></a>
+        <button class="btSelect" @onclick="SelectWorkTask">Выберите пользователя</button>
+        <br />
+        <div class="Mes"><a>Сообщение: </a><br /><textarea class="Mes" placeholder="сообщение" @bind="message" /></div>
+        <br />
+        <input type="checkbox" @bind-value="isCompleted" /><h3>Выполненно</h3>
+        <br/>
+        <div class="razdel" />
+        <button class="btObnov" @onclick="RedactWorkTask">Изменить задачу</button>
+        <button class="btBack" @onclick="Back">Отмена</button>
+    }
+</div>

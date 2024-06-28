@@ -1,0 +1,112 @@
+﻿@page "/ListClient"
+@if (person == null)
+{
+    <h1>Загрузка...</h1>
+}
+else
+{
+    <div class="MainGrid">
+        <div class="MenuGrid">
+            <div class="outer">
+                <img src="icon-512.png" style="width:40%;height:40%;" />
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToMenu">Главная</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToWorkTask">Задачи</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToClient">Список клиентов</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToProducts">Список товаров</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToOperation">Операции</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToProfil">Профиль</button>
+            </div>
+        </div>
+        <div class="razdel" />
+        <div class="RightGrid">
+            <div class="UpperMenu">
+                <div class="PersonInfo">
+                    <div>
+                        <p>@person.Dostup</p>
+                    </div>
+                    <div>
+                        <p>@person.Name</p>
+                    </div>
+                </div>
+                <div class="NameCompany">
+                    <p>@NameCompanty</p>
+                </div>
+            </div>
+            <div class="razdel" />
+            <div class="menuZad">
+                <h2>Таблица клиентов:</h2>
+                <div class="butObsh">
+                    <button @onclick="GoToAddClient">Добавить клиента</button>
+                </div>
+                <div class="divTable">
+                    <table>
+                        <tr><th class="Name">Имя</th><th class="Number">Номер телефона</th><th class="Status">Статус</th><th class="Opis">Описание</th></tr>
+                        @if(clients.Count<=10)
+                        {
+                            foreach(var cli in clients)
+                            {
+                                <tr><th class="Name">@cli.Name</th><th class="Number">@cli.Number</th><th class="Status">@cli.Status</th><th class="Opis">@GetOpis(cli.Description)</th><th><button class="btRedact" @onclick="(e=>GoToRedact(cli.Id))">Редактировать</button></th></tr>
+                            }
+                        }
+                        else if (clients.Count - pagee * 10 < 10)
+                        {
+                            int i = pagee * 10;
+                            int j = 0;
+                            foreach (var cli in clients)
+                            {
+                                if (i < clients.Count && j>=i)
+                                {
+                                    <tr><th class="Name">@cli.Name</th><th class="Number">@cli.Number</th><th class="Status">@cli.Status</th><th class="Opis">@GetOpis(cli.Description)</th><th><button class="btRedact" @onclick="(e=>GoToRedact(cli.Id))">Редактировать</button></th></tr>
+                                    i++;
+                                }
+                                j++;
+                            }
+                        }
+                        else
+                        {
+                            int i = pagee * 10;
+                            int j = 0;
+                            foreach (var cli in clients)
+                            {
+                                if (i < (pagee + 1) * 10 && j >= i)
+                                {
+                                    <tr><th class="Name">@cli.Name</th><th class="Number">@cli.Number</th><th class="Status">@cli.Status</th><th class="Opis">@GetOpis(cli.Description)</th><th><button class="btRedact" @onclick="(e=>GoToRedact(cli.Id))">Редактировать</button></th></tr>
+                                    i++;
+                                }
+                                j++;
+                            }
+                        }
+                    </table>
+                    <a style="float:right;font-size:22px;margin-right:140px;">@(pagee+1) / @Math.Ceiling((float)clients.Count/10.0)</a>
+                    <br />
+                    @if (pagee != Math.Ceiling((float)clients.Count / 10.0) - 1 && clients.Count!=0)
+                    {
+                        <button class="btMuv" @onclick="(u=>muvPage(1))">На следующую страницу</button>
+                    }
+                    @if (pagee != 0)
+                    {
+                        <button class="btMuv" @onclick="(u=>muvPage(-1))">На предыдущую страницу</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

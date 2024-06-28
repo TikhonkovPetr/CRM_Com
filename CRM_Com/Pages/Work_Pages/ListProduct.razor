@@ -1,0 +1,112 @@
+﻿@page "/ListProduct"
+@if (person == null)
+{
+    <h1>Загрузка...</h1>
+}
+else
+{
+    <div class="MainGrid">
+        <div class="MenuGrid">
+            <div class="outer">
+                <img src="icon-512.png" style="width:40%;height:40%;" />
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToMenu">Главная</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToWorkTask">Задачи</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToClient">Список клиентов</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToProducts">Список товаров</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToOperation">Операции</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToProfil">Профиль</button>
+            </div>
+        </div>
+        <div class="razdel" />
+        <div class="RightGrid">
+            <div class="UpperMenu">
+                <div class="PersonInfo">
+                    <div>
+                        <p>@person.Dostup</p>
+                    </div>
+                    <div>
+                        <p>@person.Name</p>
+                    </div>
+                </div>
+                <div class="NameCompany">
+                    <p>@NameCompanty</p>
+                </div>
+            </div>
+            <div class="razdel" />
+            <div class="menuZad">
+                <h2>Таблица товаров:</h2>
+                <div class="butObsh">
+                    <button @onclick="GoToAddProduct">Добавить товар</button>
+                </div>
+                <div class="divTable">
+                    <table>
+                        <tr><th class="Name">Название</th><th class="Cost">Стоимость</th></tr>
+                        @if (products.Count <= 10)
+                        {
+                            foreach (var pro in products)
+                            {
+                                <tr><th class="Name">@pro.Name</th><th class="Cost">@pro.cost</th><th><button class="btRedact" @onclick="(e=>GoToRedact(pro.Id))">Редактировать</button></th></tr>
+                            }
+                        }
+                        else if (products.Count - pagee * 10 < 10)
+                        {
+                            int i = pagee * 10;
+                            int j = 0;
+                            foreach (var pro in products)
+                            {
+                                if (i < products.Count && j >= i)
+                                {
+                                    <tr><th class="Name">@pro.Name</th><th class="Cost">@pro.cost</th><th><button class="btRedact" @onclick="(e=>GoToRedact(pro.Id))">Редактировать</button></th></tr>
+                                    i++;
+                                }
+                                j++;
+                            }
+                        }
+                        else
+                        {
+                            int i = pagee * 10;
+                            int j = 0;
+                            foreach (var pro in products)
+                            {
+                                if (i < (pagee + 1) * 10 && j >= i)
+                                {
+                                    <tr><th class="Name">@pro.Name</th><th class="Cost">@pro.cost</th><th><button class="btRedact" @onclick="(e=>GoToRedact(pro.Id))">Редактировать</button></th></tr>
+                                    i++;
+                                }
+                                j++;
+                            }
+                        }
+                    </table>
+                    <a style="float:right;font-size:22px;margin-right:140px;">@(pagee + 1) / @Math.Ceiling((float)products.Count / 10.0)</a>
+                    <br />
+                    @if (pagee != Math.Ceiling((float)products.Count / 10.0) - 1 && products.Count!=0)
+                    {
+                        <button class="btMuv" @onclick="(u=>muvPage(1))">На следующую страницу</button>
+                    }
+                    @if (pagee != 0)
+                    {
+                        <button class="btMuv" @onclick="(u=>muvPage(-1))">На предыдущую страницу</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

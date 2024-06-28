@@ -1,0 +1,53 @@
+﻿@page "/SelectListClient"
+<h2>Таблица клиентов:</h2>
+<div class="divTable">
+    <table>
+        <tr><th class="Name">Имя</th><th class="Number">Номер телефона</th><th class="Status">Статус</th><th class="Opis">Описание</th></tr>
+        @if (clients.Count <= 10)
+        {
+            foreach (var cli in clients)
+            {
+                <tr><th class="Name">@cli.Name</th><th class="Number">@cli.Number</th><th class="Status">@cli.Status</th><th class="Opis">@cli.Description</th><th><button class="btSelect" @onclick="(e=>Select(cli))">Выбрать</button></th></tr>
+            }
+        }
+        else if (clients.Count - pagee * 10 < 10)
+        {
+            int i = pagee * 10;
+            int j = 0;
+            foreach (var cli in clients)
+            {
+                if (i < clients.Count && j >= i)
+                {
+                    <tr><th class="Name">@cli.Name</th><th class="Number">@cli.Number</th><th class="Status">@cli.Status</th><th class="Opis">@cli.Description</th><th><button class="btSelect" @onclick="(e=>Select(cli))">Выбрать</button></th></tr>
+                    i++;
+                }
+                j++;
+            }
+        }
+        else
+        {
+            int i = pagee * 10;
+            int j = 0;
+            foreach (var cli in clients)
+            {
+                if (i < (pagee + 1) * 10 && j >= i)
+                {
+                    <tr><th class="Name">@cli.Name</th><th class="Number">@cli.Number</th><th class="Status">@cli.Status</th><th class="Opis">@cli.Description</th><th><button class="btSelect" @onclick="(e=>Select(cli))">Выбрать</button></th></tr>
+                    i++;
+                }
+                j++;
+            }
+        }
+    </table>
+    <a style="float:left;font-size:22px;margin-right:140px;">@(pagee + 1) / @Math.Ceiling((float)clients.Count / 10.0)</a>
+    <br />
+    @if (pagee != Math.Ceiling((float)clients.Count / 10.0) - 1 && clients.Count!=0)
+    {
+        <button class="btMuv" @onclick="(u=>muvPage(1))">На следующую страницу</button>
+    }
+    @if (pagee != 0)
+    {
+        <button class="btMuv" @onclick="(u=>muvPage(-1))">На предыдущую страницу</button>
+    }
+    <button class="Back" @onclick="Back">Отмена</button>
+</div>

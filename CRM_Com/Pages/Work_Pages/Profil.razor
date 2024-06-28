@@ -1,0 +1,72 @@
+﻿@page "/Profil"
+@if (person == null)
+{
+    <h1>Загрузка...</h1>
+}
+else
+{
+    <div class="MainGrid">
+        <div class="MenuGrid">
+            <div class="outer">
+                <img src="icon-512.png" style="width:40%;height:40%;" />
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToMenu">Главная</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToWorkTask">Задачи</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToClient">Список клиентов</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToProducts">Список товаров</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToOperation">Операции</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToProfil">Профиль</button>
+            </div>
+        </div>
+        <div class="razdel" />
+        <div class="RightGrid">
+            <div class="UpperMenu">
+                <div class="PersonInfo">
+                    <div>
+                        <p>@person.Dostup</p>
+                    </div>
+                    <div>
+                        <p>@person.Name</p>
+                    </div>
+                </div>
+                <div class="NameCompany">
+                    <p>@NameCompanty</p>
+                </div>
+            </div>
+            <div class="razdel" />
+            <div class="menuZad">
+                <h2>Имя: @person.Name</h2>
+                <h3>Должность: @person.Dostup</h3>
+                <h3>Задачи:</h3>
+                <h4>Выполненные задания: @complit</h4>
+                <h4>Не выполненные задания: @uncomplit</h4>
+                @if (person.Dostup=="Admin")
+                {
+                    <button class="btnZadAdd" @onclick="AddWorkTask">Дать задачу работнику</button>
+                    <button class="btnZadUpdate" @onclick="RedactWorkTask">Обновить задачу работнику</button>
+                    <br/>
+                    <button class="btnAddPerson" @onclick="AddPerson">Добавить работника в компанию</button>
+                }
+                <br/>
+                <button class="btnExit" @onclick="ExitAccount">Выйти из текущего пользователя</button>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,27 @@
+﻿@page "/RedactTransaction"
+<div class="osnov">
+    <h2>Редактирование транзикции</h2>
+    <a>Клиент: <a>@client.Name</a></a>
+    <button class="btSelect" @onclick="SelectClient">Выберите клиента</button>
+    <br />
+    <div class="razdel" />
+
+    <a>Товар: <a>@product.Name</a></a>
+    <button class="btSelect" @onclick="SelectProduct">Выберите товар</button>
+    <br />
+    <div class="razdel" />
+
+    <a>Стоимость товара: <a>@product.cost</a></a>
+    <br />
+    <div class="razdel" />
+
+    <a>Количество: </a>
+    <input type="text" placeholder="Количесво" @bind-value="colvo" />
+    <br />
+    <div class="razdel" />
+    <a>Итоговая стоимость: <a>@((colvo * GetCostProduct(product.cost)).ToString() + product.cost[product.cost.Length - 1])</a></a>
+    <br />
+    <div class="razdel" />
+    <button class="btObnov" @onclick="CreateTransaction">Редактировать транзакцию</button>
+    <button class="btBack" @onclick="Back">Отмена</button>
+</div>

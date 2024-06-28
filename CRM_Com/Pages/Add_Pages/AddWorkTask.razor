@@ -1,0 +1,12 @@
+﻿@page "/AddWorkTask"
+<div class="osnov">
+    <h2>Добавление задачи</h2>
+    <a>Пользователь: <a>@person.Name</a></a>
+    <button class="btSelect" @onclick="SelectWorkTask">Выберите пользователя</button>
+    <br />
+    <div class="Mes"><a>Сообщение: </a><br /><textarea class="Mes" placeholder="сообщение" @bind="message" /></div>
+    <br />
+    <div class="razdel" />
+    <button class="btObnov" @onclick="CreateWorkTask">Добавить задачу</button>
+    <button class="btBack" @onclick="Back">Отмена</button>
+</div>

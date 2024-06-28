@@ -1,0 +1,12 @@
+﻿@page "/AddProduct"
+<div class="osnov">
+    <h2>Добавление клиента</h2>
+    <a>Имя: </a>
+    <input type="text" placeholder="Имя" @bind-value="name" />
+    <br />
+    <a>Стоимость: </a>
+    <input type="text" placeholder="___._₽" @bind-value="cost" />
+    <br />
+    <button class="btObnov" @onclick="CreateProduct">Добавить товар</button>
+    <button class="btBack" @onclick="Back">Отмена</button>
+</div>

@@ -1,0 +1,34 @@
+﻿@page "/RedactClient"
+<div class="osnov">
+    @if(id!=Guid.Empty)
+    {
+        <h2>Добавление клиента</h2>
+        <a>Имя: </a><input type="text" placeholder="Имя" @bind-value="client.Name" />
+        <br/>
+        <a>Номер телефона: </a>
+
+        <input type="tel" placeholder="+7(000)-000-00-00" @bind-value="client.Number" />
+        <br />
+        <InputRadioGroup @bind-Value="client.Status">
+            <a>Статус:</a><br/>
+            @foreach (var val in values)
+            {
+                <a class="radio"><InputRadio Value="@val" /></a>
+                @val
+                <br />
+            }
+        </InputRadioGroup>
+        <div class="opA"><a>Описание: </a><br/><textarea placeholder="Описание" @bind="client.Description" /></div>
+        <br/>
+        <button class="btObnov" @onclick="UpdateClient">Обновить клиента</button>
+        <button class="btBack" @onclick="Back">Отмена</button>
+        <br/>
+        <br />
+        <button class="btBack" @onclick="DelClient">Удалить клиента из базы</button>
+    }
+    else
+    {
+        <h1 style="color:red;">В кэше нет выбранного пользователя.</h1>
+        <button class="btBack" @onclick="Back">Вернуться к списку клиентов</button>
+    }
+</div>

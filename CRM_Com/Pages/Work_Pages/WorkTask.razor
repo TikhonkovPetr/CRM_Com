@@ -1,0 +1,171 @@
+﻿@page "/WorkTask"
+@if (person == null)
+{
+    <h1>Загрузка...</h1>
+}
+else
+{
+    <div class="MainGrid">
+        <div class="MenuGrid">
+            <div class="outer">
+                <img src="icon-512.png" style="width:40%;height:40%;" />
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToMenu">Главная</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToWorkTask">Задачи</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToClient">Список клиентов</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToProducts">Список товаров</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToOperation">Операции</button>
+            </div>
+            <div class="razdel" />
+            <div>
+                <button @onclick="GoToProfil">Профиль</button>
+            </div>
+        </div>
+        <div class="razdel" />
+        <div class="RightGrid">
+            <div class="UpperMenu">
+                <div class="PersonInfo">
+                    <div>
+                        <p>@person.Dostup</p>
+                    </div>
+                    <div>
+                        <p>@person.Name</p>
+                    </div>
+                </div>
+                <div class="NameCompany">
+                    <p>@NameCompanty</p>
+                </div>
+            </div>
+            <div class="razdel" />
+            <div class="menuZad">
+               <div class="Tablee">
+                   <div class="NameTable">Задачи в процессе</div>
+                   <table>
+                        <tr><th class="Sender">Отправитель</th><th class="Message">Сообщение</th></tr>
+                        @if (workTasksUnComplit != null)
+                        {
+                            if (workTasksUnComplit.Count <= 6)
+                            {
+                                int i = 0;
+                                foreach (var work in workTasksUnComplit)
+                                {
+                                    <tr><th class="Sender">@sendersUnComplitName[i]</th><th class="Message">@GetMes(work.message)</th><th><button class="btnUpdate" @onclick="(e=>EndWorkTask(work))">Завершить</button></th></tr>
+                                    i++;
+                                }
+                            }
+                            else if (workTasksUnComplit.Count - pagee1 * 6 < 6)
+                            {
+                                int i = pagee1 * 6;
+                                int j = 0;
+                                foreach (var work in workTasksUnComplit)
+                                {
+                                    if (i < workTasksUnComplit.Count && j >= i)
+                                    {
+                                        <tr><th class="Sender">@sendersUnComplitName[i]</th><th class="Message">@GetMes(work.message)</th><th><button class="btnUpdate" @onclick="(e=>EndWorkTask(work))">Завершить</button></th></tr>
+                                        i++;
+                                    }
+                                    j++;
+                                }
+                            }
+                            else
+                            {
+                                int i = pagee1 * 6;
+                                int j = 0;
+                                foreach (var work in workTasksUnComplit)
+                                {
+                                    if (i < (pagee1 + 1) * 6 && j >= i)
+                                    {
+                                        <tr><th class="Sender">@sendersUnComplitName[i]</th><th class="Message">@GetMes(work.message)</th><th><button class="btnUpdate" @onclick="(e=>EndWorkTask(work))">Завершить</button></th></tr>
+                                        i++;
+                                    }
+                                    j++;
+                                }
+                            }
+                        }
+                    </table>
+                    <a style="float:left;font-size:22px;margin-right:140px;">@(pagee1 + 1) / @Math.Ceiling((float)workTasksUnComplit.Count / 6.0)</a>
+                    <br />
+                    @if (pagee1 != Math.Ceiling((float)workTasksUnComplit.Count / 6.0) - 1 && workTasksUnComplit.Count()!=0)
+                    {
+                        <button class="btMuv" @onclick="(u=>muvPage1(1))">На следующую страницу</button>
+                    }
+                    @if (pagee1 != 0)
+                    {
+                        <button class="btMuv" @onclick="(u=>muvPage1(-1))">На предыдущую страницу</button>
+                    }
+               </div>
+               <div/>
+               <div class="Tablee">
+                    <div class="NameTable">Выполненные задачи</div>
+                    <table>
+                        <tr><th class="Sender">Отправитель</th><th class="Message">Сообщение</th></tr>
+                        @if (workTasksComplit != null)
+                        {
+                            if (workTasksComplit.Count<=6)
+                            {
+                                int i = 0;
+                                foreach (var work in workTasksComplit)
+                                {
+                                    <tr><th class="Sender">@sendersComplitName[i]</th><th class="Message">@GetMes(work.message)</th></tr>
+                                    i++;
+                                }
+                            }
+                            else if (workTasksComplit.Count - pagee2*6<6)
+                            {
+                                int i = pagee2 * 6;
+                                int j = 0;
+                                foreach (var work in workTasksComplit)
+                                {
+                                    if (i < workTasksComplit.Count && j >= i)
+                                    {
+                                        <tr><th class="Sender">@sendersComplitName[i]</th><th class="Message">@GetMes(work.message)</th></tr>
+                                        i++;
+                                    }
+                                    j++;
+                                }
+                            }
+                            else
+                            {
+                                int i = pagee2 * 6;
+                                int j = 0;
+                                foreach (var work in workTasksComplit)
+                                {
+                                    if (i < (pagee2+1)*6 && j >= i)
+                                    {
+                                        <tr><th class="Sender">@sendersComplitName[i]</th><th class="Message">@GetMes(work.message)</th></tr>
+                                        i++;
+                                    }
+                                    j++;
+                                }
+                            }
+                        }
+                    </table>
+                    <a style="float:left;font-size:22px;margin-right:140px;">@(pagee2 + 1) / @Math.Ceiling((float)workTasksComplit.Count / 6.0)</a>
+                    <br />
+                    @if (pagee2 != Math.Ceiling((float)workTasksComplit.Count / 6.0) - 1 && workTasksUnComplit.Count() != 0)
+                    {
+                        <button class="btMuv" @onclick="(u=>muvPage2(1))">На следующую страницу</button>
+                    }
+                    @if (pagee2 != 0)
+                    {
+                        <button class="btMuv" @onclick="(u=>muvPage2(-1))">На предыдущую страницу</button>
+                    }
+               </div>
+            </div>
+        </div>
+    </div>
+}

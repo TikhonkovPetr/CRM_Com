@@ -1,0 +1,14 @@
+﻿@page "/Reg"
+<div style="margin-left:auto;margin-right:auto;width:15%;height:15%; margin-top: 6%;">
+    <img src="icon-512.png" style="width:60%;height:60%;" />
+</div>
+<div style="margin-left:auto;margin-right:auto;width:30%;height:60%; margin-top: 5%;">
+    @if (Err)
+    {
+        <p style="color:red;font-weight:bold;font-size:20px;">Такой пользователь уже существуе.</p>
+    }
+    <input type="text" placeholder="login" style="width:80%;height:50px;font-size:24px;text-align:center;" @bind-value="login" />
+    <input type="text" placeholder="password" style="width:80%;height:50px;font-size:24px;text-align:center;margin-top:4%;" @bind-value="password" />
+    <input type="button" value="Зарегестрироваться" style="width:70%;height:40px;font-size:24px;text-align:center;margin-top:6%; margin-left:5%;" @onclick="NavToHome" />
+    <input type="button" value="У меня есть аккаунт" style="width:70%;height:40px;font-size:24px;text-align:center;margin-top:6%; margin-left:5%;" @onclick="NavToLogin" />
+</div>

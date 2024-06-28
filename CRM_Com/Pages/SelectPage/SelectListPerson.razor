@@ -1,0 +1,53 @@
+﻿@page "/SelectListPerson"
+<h2>Таблица работников:</h2>
+<div class="divTable">
+    <table>
+        <tr><th class="Name">Имя</th><th class="Dostup">Доступ</th></tr>
+        @if (person.Count <= 10)
+        {
+            foreach (var pro in person)
+            {
+                <tr><th class="Name">@pro.Name</th><th class="Dostup">@pro.Dostup</th><th><button class="btSelect" @onclick="(e=>Select(pro))">Выбрать</button></th></tr>
+            }
+        }
+        else if (person.Count - pagee * 10 < 10)
+        {
+            int i = pagee * 10;
+            int j = 0;
+            foreach (var pro in person)
+            {
+                if (i < person.Count && j >= i)
+                {
+                    <tr><th class="Name">@pro.Name</th><th class="Dostup">@pro.Dostup</th><th><button class="btSelect" @onclick="(e=>Select(pro))">Выбрать</button></th></tr>
+                    i++;
+                }
+                j++;
+            }
+        }
+        else
+        {
+            int i = pagee * 10;
+            int j = 0;
+            foreach (var pro in person)
+            {
+                if (i < (pagee + 1) * 10 && j >= i)
+                {
+                    <tr><th class="Name">@pro.Name</th><th class="Dostup">@pro.Dostup</th><th><button class="btSelect" @onclick="(e=>Select(pro))">Выбрать</button></th></tr>
+                    i++;
+                }
+                j++;
+            }
+        }
+    </table>
+    <a style="float:left;font-size:22px;margin-right:140px;">@(pagee + 1) / @Math.Ceiling((float)person.Count / 10.0)</a>
+    <br />
+    @if (pagee != Math.Ceiling((float)person.Count / 10.0) - 1 && person.Count!=0)
+    {
+        <button class="btMuv" @onclick="(u=>muvPage(1))">На следующую страницу</button>
+    }
+    @if (pagee != 0)
+    {
+        <button class="btMuv" @onclick="(u=>muvPage(-1))">На предыдущую страницу</button>
+    }
+    <button class="Back" @onclick="Back">Отмена</button>
+</div>

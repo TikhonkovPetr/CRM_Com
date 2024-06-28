@@ -1,0 +1,44 @@
+﻿tr .Name {
+    padding-left: 10px;
+    width: 15%;
+    border-width: 2px;
+    border: solid;
+}
+
+tr .Cost {
+    width: 40%;
+    border-width: 2px;
+    border: solid;
+}
+
+th {
+    text-align: center;
+}
+
+.divTable {
+    margin-top: 40px;
+}
+
+.btSelect {
+    background-color: rgb(146, 245, 85);
+    border-color: rgb(39, 165, 29);
+    border: 5px initial;
+    border-width: 5px;
+    border-radius: 20px;
+}
+
+.btMuv {
+    background-color: rgb(53, 212, 255);
+    border-color: rgb(49, 168, 200);
+    border: 5px initial;
+    border-width: 5px;
+    border-radius: 20px;
+}
+
+.Back {
+    background-color: rgb(246, 33, 33);
+    border-color: rgb(193, 41, 41);
+    border: 5px initial;
+    border-width: 5px;
+    border-radius: 20px;
+}

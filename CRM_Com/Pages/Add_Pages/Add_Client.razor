@@ -1,0 +1,23 @@
+﻿@page "/AddClient"
+<div class="osnov">
+    <h2>Добавление клиента</h2>
+    <a>Имя: </a>
+    <input type="text" placeholder="Имя" @bind-value="name" />
+    <br />
+    <a>Номер телефона: </a>
+    <input type="tel" placeholder="+7(000)-000-00-00" @bind-value="number" />
+    <br />
+    <InputRadioGroup @bind-Value="status">
+         <a>Статус:</a><br />
+         @foreach (var val in values)
+         {
+             <a class="radio"><InputRadio Value="@val" /></a>
+             @val
+             <br />
+         }
+    </InputRadioGroup>
+    <div class="opA"><a>Описание: </a><br /><textarea placeholder="Описание" @bind="description" /></div>
+    <br />
+    <button class="btObnov" @onclick="CreateClient">Добавить клиента</button>
+    <button class="btBack" @onclick="Back">Отмена</button>
+</div>

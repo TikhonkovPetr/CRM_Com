@@ -1,0 +1,106 @@
+﻿@page "/Main_Menu"
+@if(person == null)
+{
+    <h1>Загрузка...</h1>
+}
+else{
+<div class="MainGrid">
+    <div class="MenuGrid">
+        <div class="outer">
+            <img src="icon-512.png" style="width:40%;height:40%;" />
+        </div>
+        <div class="razdel" />
+        <div>
+            <button @onclick="GoToMenu">Главная</button>
+        </div>
+        <div class="razdel" />
+        <div>
+            <button @onclick="GoToWorkTask">Задачи</button>
+        </div>
+        <div class="razdel" />
+        <div>
+            <button @onclick="GoToClient">Список клиентов</button>
+        </div>
+        <div class="razdel" />
+        <div>
+            <button @onclick="GoToProducts">Список товаров</button>
+        </div>
+        <div class="razdel" />
+        <div>
+            <button @onclick="GoToOperation">Операции</button>
+        </div>
+        <div class="razdel" />
+        <div>
+            <button @onclick="GoToProfil">Профиль</button>
+        </div>
+    </div>
+    <div class="razdel"/>
+    <div class="RightGrid">
+        <div class="UpperMenu">
+            <div class="PersonInfo">
+                <div>
+                    <p>@person.Dostup</p>
+                </div>
+                <div>
+                    <p>@person.Name</p>
+                </div>
+            </div>
+            <div class="NameCompany">
+                <p>@NameCompanty</p>
+            </div>
+        </div>
+        <div class="razdel" />
+        <div class="VarMenuRow">
+            <div />
+            <div class="VarMenuColumn">
+                <div/>
+                <div class="Var">
+                    <div class="Name">Задачи</div>
+                    <div class="razdel" />
+                    <div class="bt">
+                        <button> Открыть</button>
+                    </div>
+                </div>
+                <div />
+                <div class="Var">
+                        <div class="Name">Список клиентов</div>
+                    <div class="razdel" />
+                    <div class="bt">
+                        <button @onclick="GoToClient"> Открыть</button>
+                    </div>
+                </div>
+                <div />
+                <div class="Var">
+                        <div class="Name">Список товаров</div>
+                    <div class="razdel" />
+                    <div class="bt">
+                        <button @onclick="GoToProducts"> Открыть</button>
+                    </div>
+                </div>
+                <div />
+            </div>
+            <div />
+            <div class="VarMenuColumn2">
+                <div />
+                <div class="Var">
+                        <div class="Name">Операции</div>
+                    <div class="razdel" />
+                    <div class="bt">
+                        <button @onclick="GoToOperation"> Открыть</button>
+                    </div>
+                </div>
+                <div />
+                <div class="Var">
+                        <div class="Name">Графики</div>
+                    <div class="razdel" />
+                    <div class="bt">
+                        <button> Открыть</button>
+                    </div>
+                </div>
+                <div />
+            </div>
+            <div />
+        </div>
+    </div>
+</div>
+}

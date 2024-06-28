@@ -1,0 +1,54 @@
+﻿.Pers {
+    width: 300px;
+    height: 400px;
+    border: 5px solid;
+    border-color: rgb(65, 65, 65, 0,90);
+    border-radius: 10px;
+    float: left;
+    margin-left: 20px;
+}
+.Pers .p1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+.Pers .opis {
+    margin-left: 15px;
+    vertical-align: middle
+}
+.Pers .p2 {
+    font-size: 20px;
+}
+.Pers .but{
+    margin-top: 45%;
+    text-align:center;
+}
+.Pers .but button{
+    width:140px;
+    height: 70px;
+    border-radius:20px;
+    background-color:rgb(146, 245, 85);
+    border-color:rgb(39, 165, 29);
+    border-width:5px;
+    font-size:25px;
+    font-weight:bold;
+}
+.menu {
+    display: inline-block;
+}
+#Id_User{
+    font-size:30px;
+}
+.btnExit {
+    background-color: rgb(234, 60, 55);
+    border-color: rgb(183, 68, 68);
+    border: 5px initial;
+    border-width: 5px;
+    border-radius: 20px;
+    margin-left:50px;
+    margin-top:10%;
+    width: 220px;
+    height: 100px;
+}

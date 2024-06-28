@@ -1,0 +1,26 @@
+﻿@page "/Home"
+<p id="Id_User">Ваш персональный User Id: @hId</p>
+@if(Persons == null || Persons.Count()==0)
+{
+    <h3>Пока аккаунты привязанные к компаниям не найдены</h3>
+}
+else
+{
+    <div class="menu">
+    @foreach(var pers in Persons)
+    {
+        <section class="Pers">
+            <p class="p1">Компания:@GetComp(pers.Id_Company)</p>
+            <div class="opis">
+                <p class="p2">Имя: @pers.Name</p>
+                <p class="p2">Доступ: @pers.Dostup</p>
+            </div>
+            <div class="but">
+                <button @onclick="(e=>GotoMenu(pers))">Войти</button>
+            </div>
+        </section>
+    }
+    </div>
+    <br/>
+    <button class="btnExit" @onclick="ExitAccaunt">Выйти из аккаунта</button>
+}

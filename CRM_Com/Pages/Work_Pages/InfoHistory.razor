@@ -1,0 +1,26 @@
+﻿@page "/InfoHistory"
+<div class="osnov">
+    @if(history!=null)
+    {
+        <p>С кем взаимодействовали: @nameObj</p>
+        <br/>
+        <p>Кто изменил: @objChang</p>
+        <br />
+        <p>Что сделал: @history.Action </p>
+        <br />
+        <p>Когда: @history.Ddate</p>
+        <br/>
+    }
+    else
+    {
+        <p>С кем взаимодействовали: Не найдено</p>
+        <br />
+        <p>Кто изменил: Не найдено</p>
+        <br />
+        <p>Что сделал: Не найдено </p>
+        <br />
+        <p>Когда: Не найдено</p>
+        <br />
+    }
+    <button class="btBack" @onclick="Back">Вернуться к списку</button>
+</div>

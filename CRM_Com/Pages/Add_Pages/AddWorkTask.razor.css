@@ -1,0 +1,38 @@
+﻿.btObnov {
+    margin-left: 7%;
+    background-color: rgb(146, 245, 85);
+    border-color: rgb(39, 165, 29);
+    border: 5px initial;
+    border-width: 5px;
+    border-radius: 20px;
+}
+
+.btBack {
+    background-color: rgb(251, 54, 41);
+    border-color: rgb(191, 52, 42);
+    border: 5px initial;
+    border-width: 5px;
+    border-radius: 20px;
+}
+
+.osnov {
+    margin-left: 80px;
+    margin-top: 40px;
+}
+
+.btSelect {
+    margin-left: 5%;
+    background-color: rgb(49, 250, 250);
+    border-color: rgb(61, 189, 189);
+    border: 5px initial;
+    border-width: 5px;
+    border-radius: 20px;
+}
+
+.razdel {
+    margin-bottom: 20px;
+}
+
+.Mes{
+    width:500px;
+}
