@@ -8,9 +8,12 @@ namespace API_CRM.Controllers
     {
         DB dbcont = new DB();
         [HttpPost("Company")]
-        public async void CreateCompany([FromBody]Company comp)
+        public async void CreateCompany(string Name_comp)
         {
-            dbcont.Companys.Add(comp);
+            Company company = new Company();
+            company.Name = Name_comp;
+            company.Id= Guid.NewGuid();
+            dbcont.Companys.Add(company);
             dbcont.SaveChanges();
         }
         [HttpGet("Company")]
