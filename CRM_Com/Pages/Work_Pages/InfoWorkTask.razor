@@ -1,0 +1,17 @@
+﻿@page "/InfoWorkTask"
+<div class="osnov">
+    @if (workTask != null)
+    {
+        <p>Кто отправил: @nameSender</p>
+        <br />
+        <div class="opA"><a>Сообщение: </a><br /><textarea @bind="workTask.message" disabled="disabled"/></div>
+        <br />
+    }
+    else
+    {
+        <p>Кто отправил: Не найдено</p>
+        <br />
+        <p>Сообщение: Не найдено</p>
+    }
+    <button class="btBack" @onclick="Back">Вернуться к задачам</button>
+</div>

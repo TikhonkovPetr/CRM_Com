@@ -1,0 +1,20 @@
+﻿.osnov {
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.btBack {
+    background-color: rgb(251, 54, 41);
+    border-color: rgb(191, 52, 42);
+    border: 5px initial;
+    border-width: 5px;
+    border-radius: 20px;
+}
+textarea {
+    margin-bottom: 20px;
+    width: 30%;
+}
+
+.opA {
+    margin-top: 20px;
+}

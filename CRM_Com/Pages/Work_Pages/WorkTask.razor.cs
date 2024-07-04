@@ -95,9 +95,15 @@ namespace CRM_Com.Pages.Work_Pages
         {
             navigate.NavigateTo("./WorkTask");
         }
+        protected async Task GoToInfo(Guid Id_WorkTask)
+        {
+            await localstoreg.SetItemAsync<Guid>("Id_WorkTask_Info", Id_WorkTask);
+            navigate.NavigateTo("./InfoWorkTask");
+        }
         protected async Task EndWorkTask(Models.WorkTask work)
         {
             workTasksUnComplit.Remove(work);
+            workTasksComplit.Add(work);
             await workTaskService.PatchWorkTask(work.Id,work.Id_Company,work.Id_Person,work.Id_Sender,work.message,true);
             await historyService.PostHistory(Guid.NewGuid(),person.Id,person.Id_Company,person.Id,"Завершил задачу",DateTime.Now);
         }

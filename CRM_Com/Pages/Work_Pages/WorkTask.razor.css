@@ -83,6 +83,16 @@
     margin-left:20px;
     font-size:18px;
 }
+.btnInfo {
+    background-color: rgb(248, 207, 45);
+    border-color: rgb(212, 178, 42);
+    border: 5px initial;
+    border-width: 5px;
+    border-radius: 20px;
+    width: 120px;
+    margin-left: 20px;
+    font-size: 18px;
+}
 .btMuv {
     background-color: rgb(53, 212, 255);
     border-color: rgb(49, 168, 200);

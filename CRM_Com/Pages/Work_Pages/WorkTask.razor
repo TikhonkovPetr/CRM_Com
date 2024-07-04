@@ -63,7 +63,7 @@ else
                                 int i = 0;
                                 foreach (var work in workTasksUnComplit)
                                 {
-                                    <tr><th class="Sender">@sendersUnComplitName[i]</th><th class="Message">@GetMes(work.message)</th><th><button class="btnUpdate" @onclick="(e=>EndWorkTask(work))">Завершить</button></th></tr>
+                                    <tr><th class="Sender">@sendersUnComplitName[i]</th><th class="Message">@GetMes(work.message)</th><th><button class="btnInfo" @onclick="(e=>GoToInfo(work.Id))">Подробнее</button></th><th><button class="btnUpdate" @onclick="(e=>EndWorkTask(work))">Завершить</button></th></tr>
                                     i++;
                                 }
                             }
@@ -75,7 +75,7 @@ else
                                 {
                                     if (i < workTasksUnComplit.Count && j >= i)
                                     {
-                                        <tr><th class="Sender">@sendersUnComplitName[i]</th><th class="Message">@GetMes(work.message)</th><th><button class="btnUpdate" @onclick="(e=>EndWorkTask(work))">Завершить</button></th></tr>
+                                        <tr><th class="Sender">@sendersUnComplitName[i]</th><th class="Message">@GetMes(work.message)</th><th><button class="btnInfo" @onclick="(e=>GoToInfo(work.Id))">Подробнее</button></th><th><button class="btnUpdate" @onclick="(e=>EndWorkTask(work))">Завершить</button></th></tr>
                                         i++;
                                     }
                                     j++;
@@ -89,7 +89,7 @@ else
                                 {
                                     if (i < (pagee1 + 1) * 6 && j >= i)
                                     {
-                                        <tr><th class="Sender">@sendersUnComplitName[i]</th><th class="Message">@GetMes(work.message)</th><th><button class="btnUpdate" @onclick="(e=>EndWorkTask(work))">Завершить</button></th></tr>
+                                        <tr><th class="Sender">@sendersUnComplitName[i]</th><th class="Message">@GetMes(work.message)</th><th><button class="btnInfo" @onclick="(e=>GoToInfo(work.Id))">Подробнее</button></th><th><button class="btnUpdate" @onclick="(e=>EndWorkTask(work))">Завершить</button></th></tr>
                                         i++;
                                     }
                                     j++;
@@ -120,7 +120,7 @@ else
                                 int i = 0;
                                 foreach (var work in workTasksComplit)
                                 {
-                                    <tr><th class="Sender">@sendersComplitName[i]</th><th class="Message">@GetMes(work.message)</th></tr>
+                                    <tr><th class="Sender">@sendersComplitName[i]</th><th class="Message">@GetMes(work.message)</th><th><button class="btnInfo" @onclick="(e=>GoToInfo(work.Id))">Подробнее</button></th></tr>
                                     i++;
                                 }
                             }
@@ -132,7 +132,7 @@ else
                                 {
                                     if (i < workTasksComplit.Count && j >= i)
                                     {
-                                        <tr><th class="Sender">@sendersComplitName[i]</th><th class="Message">@GetMes(work.message)</th></tr>
+                                        <tr><th class="Sender">@sendersComplitName[i]</th><th class="Message">@GetMes(work.message)</th><th><button class="btnInfo" @onclick="(e=>GoToInfo(work.Id))">Подробнее</button></th></tr>
                                         i++;
                                     }
                                     j++;
@@ -146,7 +146,7 @@ else
                                 {
                                     if (i < (pagee2+1)*6 && j >= i)
                                     {
-                                        <tr><th class="Sender">@sendersComplitName[i]</th><th class="Message">@GetMes(work.message)</th></tr>
+                                        <tr><th class="Sender">@sendersComplitName[i]</th><th class="Message">@GetMes(work.message)</th><th><button class="btnInfo" @onclick="(e=>GoToInfo(work.Id))">Подробнее</button></th></tr>
                                         i++;
                                     }
                                     j++;
